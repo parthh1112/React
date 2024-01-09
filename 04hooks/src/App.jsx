@@ -1,11 +1,10 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
 
   let [count, setcount] = useState(0);
+  
   const addValue = () => {
     count++
     if (count == 11) count = 0
@@ -18,6 +17,8 @@ function App() {
     setcount(count)
     console.log('minus')
   }
+
+
   return (
     <>
       <h1>I am learning ReactJS</h1>
