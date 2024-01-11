@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+
 // rfce
 import React from 'react'
 function Card({username,btnText="visit me"}) {// btnText="visit me" default value, if we donot get value then "Visie me" will be printed
@@ -23,7 +25,7 @@ function Card({username,btnText="visit me"}) {// btnText="visit me" default valu
                 </div>
             </div>
         </>
-    )
+    )   
 }
 
 export default Card
