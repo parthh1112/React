@@ -1,10 +1,16 @@
 /* eslint-disable no-unused-vars */
 import React  from "react";
+import Header from './components/Header/Header'
+import Footer from './components/Footer/Footer'
+import Home from './components/Home/Home'
 function App() { 
 
   return (
     <>
-    <h1 className="bg-red-600"  >hello bye </h1>
+    <Header/> 
+    <Home/> 
+    <Footer/> 
+    
     
     </>
   )
