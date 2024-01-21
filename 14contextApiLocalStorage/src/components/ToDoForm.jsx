@@ -2,24 +2,25 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react'
 
-import { useToDo } from '../contexts/ToDoContext'
+import { useToDo } from '../contexts' 
 
 function TodoForm() {
 
     const [todo, setTodo] = useState("")
 
     const { addToDo } = useToDo()
-
+ 
+    
+    
     const add = (e) => {
         e.preventDefault();
-        if (!todo) return
+        if (!todo && todo.length <= 0) return
         // addToDo({ id: Date.now(), todo: todo, completed: false })
         // a kind of a same thing we are doing below
-        // addToDo({ todo, completed: false })
-        console.log(addToDo)
+        addToDo({ todo, completed: false })
         setTodo("")
     }
-
+     
 
 
     return (

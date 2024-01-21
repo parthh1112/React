@@ -8,15 +8,15 @@ import TodoItem from "./components/ToDoItems"
 
 
 function App() {
-  const [todos, setTodos] = useState([])
+  const [todos, setToDos] = useState([])
 
-  function addTodo(todo) {
-    // setTodos(todo) // if we do like this then all the previous value will be loss from the array 
+  function addToDo(todo) {
+    // setToDos(todo) // if we do like this then all the previous value will be loss from the array 
 
     // by doing this we have the access of the array as prev 
     // https://www.youtube.com/watch?v=DoIGxx7P-ps     => spread operator
 
-    setTodos((prev) => [{
+    setToDos((prev) => [{
       id: Date.now(), ...todo
     }, ...prev]) // ...prev have the array data excluding the data which we are going to insert rightnow and we are adding todo in array. in ToDoContext file todos array accept {id,todo,completed} to push the element in the array 
   }
@@ -24,27 +24,28 @@ function App() {
 
 
 
-  function updateTodo(id, todo) {
-    setTodos((prev) => prev.map((prevToDo) => prevToDo.id === id ? todo : prevToDo))
+  function updateToDo(id, todo) {
+    setToDos((prev) => prev.map((prevToDo) => prevToDo.id === id ? todo : prevToDo))
   }
 
 
 
-  function deleteTodo(id) {
-    setTodos((prev) => prev.filter((prevToDo) => prevToDo.id != id))
+  function deleteToDo(id) {
+    setToDos((prev) => prev.filter((prevToDo) => prevToDo.id != id))
   }
 
 
 
-  function toggleTodo(id) {
-    setTodos((prev) => prev.map((prevToDo) => (prevToDo.id === id) ? { ...prevToDo, completed: !prevToDo.completed } : prevToDo))
+  function toggleToDo(id) {
+    setToDos((prev) => prev.map((prevToDo) => (prevToDo.id === id) ? { ...prevToDo, completed: !prevToDo.completed } : prevToDo))
   }
 
 
   useEffect(() => {
     const todos = JSON.parse(localStorage.getItem('todos'))
+    console.log(todos)
     if (todos) {
-      setTodos(todos)
+      setToDos(todos)
     }
   }, []);
 
@@ -55,7 +56,7 @@ function App() {
 
 
   return (
-    <ToDoProvider value={{ todos, addTodo, updateTodo, deleteTodo, toggleTodo }}>
+    <ToDoProvider value={{ todos, addToDo, updateToDo, deleteToDo, toggleToDo }}>
 
       <div className="bg-[#172842] min-h-screen py-8">
         <div className="w-full max-w-2xl mx-auto shadow-md rounded-lg px-4 py-3 text-white">
@@ -64,12 +65,19 @@ function App() {
             <ToDoForm />
           </div>
           <div className="flex flex-wrap gap-y-3">
+
+
+
             {todos.map((todo) => (
               <div key={todo.id} className="w-full">
-              <TodoItem todo={todo}/>
+                <TodoItem todo={todo} />
 
               </div>
             ))}
+
+
+
+
           </div>
         </div>
       </div>
